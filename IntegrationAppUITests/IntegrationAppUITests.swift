@@ -6,6 +6,12 @@
 //  Copyright © 2017 Facebook. All rights reserved.
 //
 
+//'expectationForPredicate(_:evaluatedWithObject:handler:)' has been renamed to 
+//'expectation(for:evaluatedWith:handler:)'
+
+//'waitForExpectationsWithTimeout(_:handler:)' has been renamed to 
+//'waitForExpectations(timeout:handler:)'
+
 import XCTest
 
 class IntegrationAppUITests: XCTestCase {
@@ -17,8 +23,8 @@ class IntegrationAppUITests: XCTestCase {
         app.buttons["Alerts"].tap()
         let appAlert = app.buttons["Create App Alert"]
         let exists = NSPredicate(format: "exists == true")
-        expectationForPredicate(exists, evaluatedWithObject: appAlert, handler: nil)
-        waitForExpectationsWithTimeout(5, handler: nil)
+        expectation(for: exists, evaluatedWithObject: appAlert, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         appAlert.tap()
         app.alerts["Magic"].buttons["Will do"].tap()
         app.navigationBars["FBAlertView"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0).tap()
