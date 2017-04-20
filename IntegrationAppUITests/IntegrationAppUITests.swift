@@ -23,7 +23,7 @@ class IntegrationAppUITests: XCTestCase {
         app.buttons["Alerts"].tap()
         let appAlert = app.buttons["Create App Alert"]
         let exists = NSPredicate(format: "exists == true")
-        expectation(for: exists, evaluatedWithObject: appAlert, handler: nil)
+        expectation(for: exists, evaluatedWith: appAlert, handler: nil)
         waitForExpectations(timeout: 5, handler: nil)
         appAlert.tap()
         app.alerts["Magic"].buttons["Will do"].tap()
