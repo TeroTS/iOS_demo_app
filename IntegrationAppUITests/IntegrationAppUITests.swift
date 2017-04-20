@@ -15,7 +15,11 @@ class IntegrationAppUITests: XCTestCase {
     func test1() {
         XCUIApplication().launch()
         app.buttons["Alerts"].tap()
-        app.buttons["Create App Alert"].tap()
+        let appAlert = app.buttons["Create App Alert"]
+        let exists = NSPredicate(format: "exists == true")
+        expectationForPredicate(exists, evaluatedWithObject: appAlert, handler: nil)
+        waitForExpectationsWithTimeout(5, handler: nil)
+        appAlert.tap()
         app.alerts["Magic"].buttons["Will do"].tap()
         app.navigationBars["FBAlertView"].children(matching: .button).matching(identifier: "Back").element(boundBy: 0).tap()
     }
